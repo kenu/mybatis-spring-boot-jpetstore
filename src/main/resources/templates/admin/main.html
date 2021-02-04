@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+  <section layout:fragment="content">
+    <div>
+        <form th:action="@{/admin/username}" method="get" th:object="${@accountSearchCriteria}">
+          <input name="keywords" size="14" th:value="${@accountSearchCriteria.keywords}"/>
+          <input id="searchAccounts" type="submit" value="Search"/>
+        </form>
+      Total <span th:text="${count}"></span>
+      <h3>Account List</h3>
+      <table style="margin: auto">
+        <tr>
+          <th>User Id</th>
+          <th>Email</th>
+          <th>Country</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(accountList)}">
+          <td colspan="3">
+            account not found.
+          </td>
+        </tr>
+        <tr th:each="account : ${accountList}">
+          <td>
+            <span th:text="${account.username}"></span>
+          </td>
+          <td>
+            <span th:text="${account.email}"></span>
+          </td>
+          <td>
+            <span th:text="${account.country}"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</div>
+</body>
+</html>

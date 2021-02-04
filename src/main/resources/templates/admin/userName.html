@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+  <section layout:fragment="content">
+
+    <div id="Admin">
+
+      <table>
+        <tr>
+          <th>User Id</th>
+          <th>Email</th>
+          <th>Country</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(accountList)}">
+          <td colspan="3">
+            <b>Accounts not found.</b>
+          </td>
+        </tr>
+        <tr th:each="account : ${accountList}">
+          <td>
+            <span th:text="${account.username}"></span>
+          </td>
+          <td>
+            <span th:text="${account.email}"></span>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+  </section>
+</div>
+</body>
+</html>

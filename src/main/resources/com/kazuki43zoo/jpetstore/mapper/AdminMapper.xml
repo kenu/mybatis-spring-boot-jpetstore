@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kazuki43zoo.jpetstore.mapper.AdminMapper">
+  <select id="getAccountCount" resultType="Integer">
+    select count(*) from account a
+  </select>
+  <select id="getAccountList" resultType="Account">
+    select userid as username, email, firstname, lastname, status, addr1, addr2,city, state, zip, country, phone from account a
+  </select>
+
+  <select id="searchAccountList" resultType="Account">
+    select
+      userid as username,
+      email
+    from account
+    WHERE email like concat('%',#{keyword}, '%')
+  </select>
+</mapper>
