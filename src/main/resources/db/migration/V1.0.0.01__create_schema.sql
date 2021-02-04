@@ -157,7 +157,7 @@ create table inventory (
     constraint pk_inventory primary key (itemid)
 );
 
-CREATE TABLE sequence(
+CREATE TABLE sequence (
     name               varchar(30)  not null,
     nextid             int          not null,
     constraint pk_sequence primary key (name)
