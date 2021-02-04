@@ -14,12 +14,11 @@
 #    limitations under the License.
 #
 
-# MyBatis settings
-mybatis.type-aliases-package=com.kazuki43zoo.jpetstore.domain
-
-# Spring Transaction management settings
-spring.transaction.default-timeout=10
-spring.transaction.rollback-on-commit-failure=true
-
-# Logging settings
-logging.level.com.kazuki43zoo.jpetstore=TRACE
+spring:
+  profiles:
+    include: common
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/devdb?useUnicode=true&charaterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: devuser
+    password: devpass
