@@ -14,20 +14,28 @@
             </form>
             <table style="margin: auto;">
                 <tr>
-                    <th>Name</th>
-                    <th>Count</th>
+                    <th>product id</th>
+                    <th>category id</th>
+                    <th>name</th>
+                    <th>description</th>
                 </tr>
-                <tr th:if="${#lists.isEmpty(accountList)}">
+                <tr th:if="${#lists.isEmpty(productList)}">
                     <td colspan="3">
-                        account not found.
+                        product not found.
                     </td>
                 </tr>
                 <tr th:each="product : ${productList}">
                     <td>
+                        <span th:text="${product.productId}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${product.categoryId}"></span>
+                    </td>
+                    <td>
                         <span th:text="${product.name}"></span>
                     </td>
                     <td>
-                        <span th:text="${product.count}"></span>
+                        <a th:utext="${product.description}"></a>
                     </td>
                 </tr>
 

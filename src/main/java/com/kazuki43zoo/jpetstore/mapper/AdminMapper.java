@@ -15,7 +15,7 @@ public interface AdminMapper {
 
     List<Account> getAccountList(String keywords);
 
-    int getProductCount();
+    public int getProductCount();
 
     List<Product> getProductList(String keywords);
 }
