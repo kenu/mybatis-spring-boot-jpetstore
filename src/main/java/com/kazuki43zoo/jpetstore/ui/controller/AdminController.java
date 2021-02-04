@@ -32,4 +32,9 @@ public class AdminController {
         return "admin/main";
     }
 
+    @GetMapping("/product")
+    public String product(@RequestParam(defaultValue = "") String keywords, Model model) {
+        return "admin/product";
+    }
+
 }
