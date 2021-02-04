@@ -1,7 +1,9 @@
 package com.kazuki43zoo.jpetstore.ui.controller;
 
 import com.kazuki43zoo.jpetstore.domain.Account;
+import com.kazuki43zoo.jpetstore.mapper.AdminMapper;
 import com.kazuki43zoo.jpetstore.service.AdminService;
+import com.kazuki43zoo.jpetstore.service.CatalogService;
 import com.kazuki43zoo.jpetstore.ui.ProductSearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ public class AdminController {
 
     private final AdminService adminService;
     private final ProductSearchCriteria productSearchCriteria;
+    private final CatalogService catalogService;
 
     @GetMapping
     public String main(@RequestParam(defaultValue = "") String keywords, Model model) {
@@ -33,6 +36,10 @@ public class AdminController {
 
     @GetMapping("/product")
     public String showProduct(@RequestParam(defaultValue = "") String keywords, Model model) {
+        productSearchCriteria.setKeywords(keywords);
+
+        int count = catalogService.getProductCount();
+        model.addAttribute("count", count);
         return "admin/product";
     }
 

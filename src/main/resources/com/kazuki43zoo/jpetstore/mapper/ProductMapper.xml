@@ -15,6 +15,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kazuki43zoo.jpetstore.mapper.ProductMapper">
+  <select id="getProductCount" resultType="Integer">
+    SELECT count(*) FROM PRODUCT
+  </select>
 
   <select id="getProduct" resultType="Product">
     SELECT

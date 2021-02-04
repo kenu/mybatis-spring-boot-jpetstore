@@ -26,6 +26,7 @@ import java.util.List;
 @Mapper
 @CacheNamespace
 public interface ProductMapper {
+    int getProductCount();
 
     List<Product> getProductListByCategory(String categoryId);
 

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
-Hello product
+<div id="Content">
+  <section layout:fragment="content">
+    <div style="text-align: center;">
+      Total <span th:text="${count}"></span>
+<!--      <h3>Account List</h3>-->
+<!--      <form th:action="@{/admin}" method="get" th:object="${@productSearchCriteria}">-->
+<!--        <input name="keywords" size="14" th:value="${@productSearchCriteria.keywords}"/>-->
+<!--        <input id="searchEmails" type="submit" value="Search" />-->
+<!--      </form>-->
+<!--      <table style="margin: auto;">-->
+<!--        <tr>-->
+<!--          <th>User Id</th>-->
+<!--          <th>Email</th>-->
+<!--          <th>Country</th>-->
+<!--        </tr>-->
+<!--        <tr th:if="${#lists.isEmpty(accountList)}">-->
+<!--          <td colspan="3">-->
+<!--            account not found.-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        <tr th:each="account : ${accountList}">-->
+<!--          <td>-->
+<!--            <span th:text="${account.username}"></span>-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <span th:text="${account.email}"></span>-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <span th:text="${account.country}"></span>-->
+<!--          </td>-->
+<!--        </tr>-->
+
+<!--      </table>-->
+    </div>
+  </section>
+</div>
 </body>
 </html>
