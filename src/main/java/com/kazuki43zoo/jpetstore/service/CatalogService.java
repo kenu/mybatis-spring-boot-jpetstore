@@ -77,4 +77,12 @@ public class CatalogService {
 	}
 
 	public int getProductCount() { return productMapper.getProductCount(); }
+
+	public List<Product> getProductList(String keywords) {
+		return Stream.of(Optional.ofNullable(keywords).orElse("").split("\\s+"))
+				.distinct()
+				.flatMap(x -> productMapper.searchProductList(x).stream())
+				.distinct()
+				.collect(Collectors.toList());
+	}
 }

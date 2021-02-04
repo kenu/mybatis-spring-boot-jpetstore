@@ -1,6 +1,7 @@
 package com.kazuki43zoo.jpetstore.ui.controller;
 
 import com.kazuki43zoo.jpetstore.domain.Account;
+import com.kazuki43zoo.jpetstore.domain.Product;
 import com.kazuki43zoo.jpetstore.mapper.AdminMapper;
 import com.kazuki43zoo.jpetstore.service.AdminService;
 import com.kazuki43zoo.jpetstore.service.CatalogService;
@@ -39,8 +40,10 @@ public class AdminController {
         productSearchCriteria.setKeywords(keywords);
 
         int count = catalogService.getProductCount();
+        List<Product> productList = catalogService.getProductList(productSearchCriteria.getKeywords());
         model.addAttribute("count", count);
-        return "admin/product";
+        model.addAttribute("productList", productList);
+        return "admin/products";
     }
 
 }
