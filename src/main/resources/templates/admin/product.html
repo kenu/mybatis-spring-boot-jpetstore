@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+        <div style="text-align: center;">
+            <h3>Product List</h3>
+            <form th:action="@{/admin/product}" method="get" th:object="${@productSearchCriteria}">
+                <input name="keywords" size="14" th:value="${@productSearchCriteria.keywords}"/>
+                <input id="searchName" type="submit" value="Search" />
+            </form>
+            <table style="margin: auto;">
+                <tr>
+                    <th>product ID</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                </tr>
+                <tr th:if="${#lists.isEmpty(productList)}">
+                    <td colspan="3">
+                        product not found.
+                    </td>
+                </tr>
+                <tr th:each="product : ${productList}">
+                    <td>
+                        <span th:text="${product.productId}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${product.categoryId}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${product.name}"></span>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </section>
+</div>
+</body>
+</html>
