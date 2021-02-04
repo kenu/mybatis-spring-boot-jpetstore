@@ -37,6 +37,8 @@ public class AdminController {
 
     @GetMapping("/products")
     public String getProducts(@RequestParam(defaultValue = "") String keywords, Model model) {
+        productSearchCriteria.setKeywords(keywords);
+        String test = productSearchCriteria.getKeywords();
         List<Product> products = catalogService.getProductList(productSearchCriteria.getKeywords());
         int productCount = catalogService.getProductCount();
         model.addAttribute("productList", products);

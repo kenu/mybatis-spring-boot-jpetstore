@@ -5,11 +5,17 @@
 <body>
 <div id="Content">
     <section layout:fragment="content">
-        <div style="text-align: center;">
-            Total <span th:text="${count}"></span>
-        </div>
-
         <div id="Catalog">
+            <h1> Product List </h1>
+            <div style="text-align: center;">
+                Total <span th:text="${count}"></span>
+            </div>
+
+            <form th:action="@{/admin/products}" method="get" th:object="${@productSearchCriteria}">
+                <input name="keywords" size="14" th:value="${@productSearchCriteria.keywords}"/>
+                <input id="searchProducts" type="submit" value="Search" />
+            </form>
+
             <table>
                 <tr>
                     <th>Product ID</th>
