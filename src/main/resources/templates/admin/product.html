@@ -1,0 +1,61 @@
+<!--
+       Copyright 2016-2017 the original author or authors.
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+    <section layout:fragment="content">
+
+        <div style="text-align: center">
+            Total <span th:text="${count}"></span>
+            <h3>Account List</h3>
+            <form th:action="@{/admin/product}" method="get" th:object="${@productSearchCriteria}">
+                <input name="keywords" size="14" th:value="${@productSearchCriteria.keywords}"/>
+                <input id="searchProducts" type="submit" value="Search" />
+            </form>
+        </div>
+        <div id="Catalog">
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Product ID</th>
+                </tr>
+                <tr th:if="${#lists.isEmpty(productList)}">
+                    <td colspan="3">
+                        <b>Products not found.</b>
+                    </td>
+                </tr>
+                <tr th:each="product : ${productList}">
+                    <td th:text="${product.name}"></td>
+                    <td>
+                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:utext="${product.description}"></a>
+                    </td>
+                    <td>
+                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:text="${product.productId}">
+                            AV-CB-01
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </section>
+</div>
+</body>
+</html>
