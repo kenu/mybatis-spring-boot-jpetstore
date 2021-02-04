@@ -63,6 +63,10 @@ public class CatalogService {
 				.collect(Collectors.toList());
 	}
 
+	public int getProductCount() {
+		return productMapper.getProductCount();
+	}
+
 	public List<Item> getItemListByProduct(String productId) {
 		return itemMapper.getItemListByProduct(productId);
 	}
