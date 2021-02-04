@@ -4,7 +4,6 @@ import com.kazuki43zoo.jpetstore.domain.Account;
 import com.kazuki43zoo.jpetstore.service.AdminService;
 import com.kazuki43zoo.jpetstore.ui.ProductSearchCriteria;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +29,11 @@ public class AdminController {
         model.addAttribute("count", count);
         model.addAttribute("accountList", accountList);
         return "admin/main";
+    }
+
+    @GetMapping("/product")
+    public String showProduct(@RequestParam(defaultValue = "") String keywords, Model model) {
+        return "admin/product";
     }
 
 }
