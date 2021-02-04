@@ -1,6 +1,7 @@
 package com.kazuki43zoo.jpetstore.ui.controller;
 
 import com.kazuki43zoo.jpetstore.domain.Account;
+import com.kazuki43zoo.jpetstore.domain.Product;
 import com.kazuki43zoo.jpetstore.service.AdminService;
 import com.kazuki43zoo.jpetstore.ui.ProductSearchCriteria;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,12 @@ public class AdminController {
 
     @GetMapping("/product")
     public String product(@RequestParam(defaultValue = "") String keywords, Model model) {
+        productSearchCriteria.setKeywords(keywords);
+
+        int count = adminService.getProductCount();
+        List<Product> productList = adminService.getProductList(productSearchCriteria.getKeywords());
+        model.addAttribute("count", count);
+        model.addAttribute("productList", productList);
         return "admin/product";
     }
 
