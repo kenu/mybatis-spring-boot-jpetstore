@@ -34,6 +34,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Product ID</th>
+                    <th>Category ID</th>
                 </tr>
                 <tr th:if="${#lists.isEmpty(productList)}">
                     <td colspan="3">
@@ -46,10 +47,9 @@
                         <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:utext="${product.description}"></a>
                     </td>
                     <td>
-                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:text="${product.productId}">
-                            AV-CB-01
-                        </a>
+                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:text="${product.productId}"></a>
                     </td>
+                    <td th:text="${product.categoryId}"></td>
                 </tr>
             </table>
 
