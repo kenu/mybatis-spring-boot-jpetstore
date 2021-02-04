@@ -40,12 +40,13 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1'
     implementation 'org.springframework.boot:spring-boot-devtools:2.3.1.RELEASE'
-    runtimeOnly 'org.hsqldb:hsqldb:2.5.0'
-    runtimeOnly 'org.flywaydb:flyway-core:6.4.4'
+   // runtimeOnly 'org.hsqldb:hsqldb:2.5.0'
+    //runtimeOnly 'org.flywaydb:flyway-core:6.4.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.3.1.RELEASE'
     testImplementation 'com.codeborne:selenide:5.12.2'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    implementation 'mysql:mysql-connector-java:8.0.23'
 }
 
 group = 'com.kazuki43zoo.examples'

@@ -1,0 +1,13 @@
+mybatis:
+  type-aliases-package: com.kazuki43zoo.jpetstore.domain
+
+spring:
+  transaction:
+    rollback-on-commit-failure: true
+    default-timeout: 10
+
+logging:
+  level:
+    com:
+      kazuki43zoo:
+        jpetstore: TRACE

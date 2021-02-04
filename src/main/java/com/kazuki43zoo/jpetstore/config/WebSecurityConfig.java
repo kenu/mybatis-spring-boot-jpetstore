@@ -28,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		//http.csrf().disable();
 		http.formLogin()
 				.loginPage("/login")
 				.defaultSuccessUrl("/catalog")
@@ -38,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.deleteCookies("JSESSIONID")
 				.permitAll();
 		http.authorizeRequests()
-				.mvcMatchers("/my/**").authenticated()
+				.mvcMatchers("/my/**", "/admin/**").authenticated()
 				.anyRequest().permitAll();
 	}
 
