@@ -8,6 +8,32 @@
         <div style="text-align: center;">
             Total <span th:text="${count}"></span>
         </div>
+
+        <div id="Catalog">
+            <table>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr th:if="${#lists.isEmpty(productList)}">
+                    <td colspan="3">
+                        <b>No data</b>
+                    </td>
+                </tr>
+                <tr th:each="product : ${productList}">
+                    <td>
+                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:text="${product.productId}"></a>
+                    </td>
+                    <td>
+                        <span th:text="${product.name}"></span>
+                    </td>
+                    <td>
+                        <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}" th:utext="${product.description}"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </section>
 </div>
 </body>

@@ -1,6 +1,7 @@
 package com.kazuki43zoo.jpetstore.ui.controller;
 
 import com.kazuki43zoo.jpetstore.domain.Account;
+import com.kazuki43zoo.jpetstore.domain.Product;
 import com.kazuki43zoo.jpetstore.service.AdminService;
 import com.kazuki43zoo.jpetstore.service.CatalogService;
 import com.kazuki43zoo.jpetstore.ui.ProductSearchCriteria;
@@ -36,9 +37,10 @@ public class AdminController {
 
     @GetMapping("/products")
     public String getProducts(@RequestParam(defaultValue = "") String keywords, Model model) {
+        List<Product> products = catalogService.getProductList(productSearchCriteria.getKeywords());
         int productCount = catalogService.getProductCount();
+        model.addAttribute("productList", products);
         model.addAttribute("count", productCount);
         return "admin/product";
     }
-
 }

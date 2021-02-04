@@ -51,6 +51,14 @@ public class CatalogService {
 				.orElseThrow(() -> new ResourceNotFoundException("Product", productId));
 	}
 
+	public List<Product> getProductList(String keywords) {
+		return Stream.of(Optional.ofNullable(keywords).orElse("").split("\\s+"))
+				.distinct()
+				.flatMap(x -> productMapper.searchProductList(x).stream())
+				.distinct()
+				.collect(Collectors.toList());
+	}
+
 	public List<Product> getProductListByCategory(String categoryId) {
 		return productMapper.getProductListByCategory(categoryId);
 	}
