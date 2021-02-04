@@ -4,27 +4,39 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kazuki43zoo.jpetstore.mapper.AdminMapper">
 
-  <select id="getAccountCount" resultType="Integer">
-      SELECT count(*) FROM account a
-  </select>
+    <select id="getAccountCount" resultType="Integer">
+        SELECT count(*)
+        FROM account a
+    </select>
 
-  <select id="getAccountList" resultType="Account">
-      SELECT
-          userid as username,
-          email,
-          firstname,
-          lastname,
-          status,
-          addr1,
-          addr2,
-          city,
-          state,
-          zip,
-          country,
-          phone
-      FROM
-          account a
-      WHERE lower(email) like concat('%', #{keyword}, '%')
-  </select>
+    <select id="getAccountList" resultType="Account">
+        SELECT userid as username,
+               email,
+               firstname,
+               lastname,
+               status,
+               addr1,
+               addr2,
+               city,
+               state,
+               zip,
+               country,
+               phone
+        FROM account a
+        WHERE lower(email) like concat('%', #{keyword}, '%')
+    </select>
+
+    <select id="getProductCount" resultType="Integer">
+        SELECT count(*)
+        FROM product p
+    </select>
+    <select id="getProductList" resultType="Product">
+        SELECT productid as productId,
+               category as categoryId,
+               name,
+               descn as description
+        FROM product p
+        WHERE lower(name) like concat('%', #{keyword}, '%')
+    </select>
 
 </mapper>
