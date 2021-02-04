@@ -46,4 +46,9 @@
     WHERE lower(name) like concat('%', #{keyword}, '%')
   </select>
 
+  <select id="getProductCount" resultType="INTEGER">
+    select count(*)
+    from product
+  </select>
+
 </mapper>
