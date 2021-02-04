@@ -33,4 +33,8 @@ public interface ProductMapper {
 
     List<Product> selectProductList(String keyword);
 
+    int getProductCount();
+
+    List<Product> getProductList();
+
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div id="Content">
+  <section layout:fragment="content">
+    <div>
+      <form th:action="@{/admin/product/name}" method="get" th:object="${@productSearchCriteria}">
+        <input name="keywords" size="14" th:value="${@productSearchCriteria.keywords}"/>
+        <input id="searchAccounts" type="submit" value="Search"/>
+      </form>
+      Total <span th:text="${count}"></span>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Product ID</th>
+        <th>Name</th>
+      </tr>
+      <tr th:if="${#lists.isEmpty(productList)}">
+        <td colspan="3">
+          <b>Products not found.</b>
+        </td>
+      </tr>
+      <tr th:each="product : ${productList}">
+        <td>
+          <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}"
+             th:utext="${product.description}"></a>
+        </td>
+        <td>
+          <a th:href="@{/catalog/products/{productId}(productId=${product.productId})}"
+             th:text="${product.productId}">
+            AV-CB-01
+          </a>
+        </td>
+        <td th:text="${product.name}">Amazon Parrot</td>
+      </tr>
+    </table>
+    </div>
+  </section>
+</div>
+</body>
+</html>
