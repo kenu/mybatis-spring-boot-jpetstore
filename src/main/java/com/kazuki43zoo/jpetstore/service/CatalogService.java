@@ -58,7 +58,7 @@ public class CatalogService {
 	public List<Product> searchProductList(String keywords) {
 		return Stream.of(Optional.ofNullable(keywords).orElse("").split("\\s+"))
 				.distinct()
-				.flatMap(x -> productMapper.selectProductList(x).stream())
+				.flatMap(x -> productMapper.searchProductList(x).stream())
 				.distinct()
 				.collect(Collectors.toList());
 	}
