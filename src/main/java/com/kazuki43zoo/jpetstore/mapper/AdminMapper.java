@@ -11,5 +11,5 @@ import java.util.List;
 public interface AdminMapper {
     public int getAccountCount();
 
-    List<Account> getAccountList(String keywords);
+    List<Account> getAccountList(String keyword);
 }
